@@ -1,0 +1,214 @@
+
+:root{
+    --my-padding:0.4rem;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.container {
+
+    color: rgb(5, 5, 5);
+    display: grid;/*ruudustiku omadus, muster*/
+    gap: 10px; /*teeb ruudustiku vahele vahed*/
+    grid-template-columns: 1fr 1fr 1fr; /*loom web-i lehele veerud 1fr- veerg*/
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "header nav nav nav "
+    "HERO HERO HERO HERO "
+    "main main IMAGE IMAGE" 
+    "main main sidebar sidebar "
+    "BANNER BANNER BANNER BANNER "
+    ;
+    height: 100vh;
+    text-align: center; /*tektid ja jutu viib lehe keskele*/
+    text-transform: uppercase;
+
+}
+
+nav { 
+    background-color: red;
+    grid-area: nav;
+    padding:  var(--my-padding);
+    align-items: center;
+
+}
+
+.nav-container{ /*jaotab  nav kastis nupud laiali*/
+    align-items: center;
+    display: grid;
+    justify-content: center; /* Horisontaalse keskjoondamise lisamine */
+    /*text-align: center; */
+    height: 100%;
+    grid-template-columns: repeat (4, 1fr); /* korrutab kasti ridu laiali*/
+    grid-template-rows: 1fr;
+
+}
+
+.nav-container a {
+    color: black;
+    font-weight: bold;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding: var(--my-padding);
+
+    text-decoration: none;
+}
+
+/*.nav-container a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}*/
+
+.header {
+    color:white;
+    font-weight: bold;
+    font-size: 36px;
+    align-items: center;
+    display: grid;
+    background-color: black;
+    grid-area: header;
+    padding: var(--my-padding);
+    
+
+}
+
+.HERO {
+    font-weight: bold;
+    font-size: 36px;
+    align-items: center;
+    display: grid;
+    background-color: skyblue;
+    grid-area: HERO;
+    padding:var(--my-padding);
+}
+
+.IMAGE {
+    font-weight: bold;
+    font-size: 36px;
+    align-items: center;
+    display: grid;
+    background-color: gray;
+    grid-area: IMAGE;
+    padding: var(--my-padding);
+}
+
+.sidebar {
+    align-items: center;
+    display: grid;
+    background-color: green;
+    grid-area: sidebar;
+    padding: var(--my-padding);
+
+    /* Teksti omaduste muutmine */
+    font-family: Arial, sans-serif; /* Näide fondist */
+    font-size: 36px; /* Näide fondi suurusest */
+    font-weight: bold; /* Näide fondi jämedusest */
+    color: white; /* Teksti värv */
+    text-align: center; /* Teksti joondamine */
+
+}
+main {
+    font-weight: bold;
+    font-size: 36px;
+    align-items: center;
+    display: grid;
+    background-color: darkred;
+    grid-area: main;
+    padding: var(--my-padding);
+    color: black;
+
+}
+.banner {
+    background-color: orange;
+    grid-area: BANNER;
+    padding: var(--my-padding);
+    font-size: 36px; /* Näide fondi suurusest */
+    font-weight: bold; /* Näide fondi jämedusest */
+
+}
+
+@media (max-width:1024px) {
+    .nav-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        
+    }
+    @media (max-width: 1024px) {
+        .nav-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+    }
+    .container{
+        gap: 0;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 0.5fr;
+        grid-template-areas: 
+        "header"
+        "HERO HERO HERO HERO "
+        "nav main IMAGE IMAGE" 
+        "nav main sidebar "
+        "nav BANNER IMAGE "
+        ;
+    } 
+
+    /*.sidebar {
+        display: none;
+    }*/
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        
+    }
+    @media (max-width: 1024px) {
+        .nav-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+    }
+
+   
+        nav {
+            width: 100%; /* Tagab, et "nav" kast täidab kogu laiuse */
+            height: 100px; /* Kõrgus 100px */
+        
+       
+        }
+    
+
+    .sidebar {
+        display: block;
+    }
+
+    .hero {
+        display: none;
+    }
+
+
+
+    .container {
+        gap: 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 1fr); /*repeat(6, 1fr); /* repeat korrutab ridu*/
+        grid-template-areas:
+        "header"
+        "nav" /*menu*/
+        "HERO"
+        "main"
+        "BANNER"
+        "sidebar" /* extra*/
+        "IMAGE"
+        ;
+    } 
+}
